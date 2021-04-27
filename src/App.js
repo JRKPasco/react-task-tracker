@@ -6,20 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Card, Container } from 'react-bootstrap'
 
 const App = () => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'Create CV',
-      date: '26 Apr',
-      reminder: true,
-    },
-    {
-      id: 2,
-      text: 'Create Portfolio',
-      date: '26 Apr',
-      reminder: false,
-    },
-  ])
+  const [tasks, setTasks] = useState([])
 
   const addTask = (task) => {
     setTasks([
