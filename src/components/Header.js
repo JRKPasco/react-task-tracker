@@ -1,9 +1,11 @@
-const Header = () => {
+import { Card } from 'react-bootstrap'
+
+const Header = ({ children }) => {
   return (
-    <div className='card-header d-flex justify-content-between'>
-      <h4 className='align-self-center mb-0'>Task Tracker</h4>
-      <button className='btn btn-sm btn-primary'>New</button>
-    </div>
+    <Card.Header>
+      <h4 className='align-self-center'>Task Tracker</h4>
+      {children}
+    </Card.Header>
   )
 }
 

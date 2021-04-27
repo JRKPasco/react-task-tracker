@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import Header from './components/Header'
-import Tasks from './components/Tasks'
+import Tasklist from './components/Tasklist'
+import TaskForm from './components/TaskForm'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Card, Container } from 'react-bootstrap'
 
 const App = () => {
   const [tasks, setTasks] = useState([
@@ -18,6 +21,16 @@ const App = () => {
     },
   ])
 
+  const addTask = (task) => {
+    setTasks([
+      ...tasks,
+      {
+        id: Math.floor(Math.random() * 10000) + 1,
+        ...task,
+      },
+    ])
+  }
+
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id))
   }
@@ -31,12 +44,18 @@ const App = () => {
   }
 
   return (
-    <div className='container mt-3'>
-      <div className='card'>
-        <Header />
-        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
-      </div>
-    </div>
+    <Container className='mt-3'>
+      <Card>
+        <Header>
+          <TaskForm addTask={addTask} />
+        </Header>
+        <Tasklist
+          tasks={tasks}
+          onDelete={deleteTask}
+          onToggle={toggleReminder}
+        />
+      </Card>
+    </Container>
   )
 }
 
